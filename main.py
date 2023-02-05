@@ -35,11 +35,11 @@ def email():
 
 
 def main():
-    options = webdriver.ChromeOptions()
-    options.add_argument("--ignore-certificate-error")
-    options.add_argument("--ignore-ssl-errors")
+    # chromedriver = "./chromedriver"
+    # driver = webdriver.Chrome(chromedriver)
+    chromedriver = ChromeDriverManager().install()
 
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(chromedriver)
     driver.minimize_window()
 
     url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
