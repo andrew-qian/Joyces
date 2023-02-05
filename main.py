@@ -64,7 +64,7 @@ def main():
     driver.quit()
     if len(elements) > 0:
         email()
-
+print("Starting program...")
 while (True):
     main()
     time.sleep(1200)
