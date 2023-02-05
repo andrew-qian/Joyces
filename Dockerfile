@@ -1,3 +1,4 @@
+FROM alpine:3.4
 RUN bash -c 'echo -e starting docker install'
 RUN apt -f install -y
 RUN apt-get install -y wget
