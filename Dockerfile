@@ -10,4 +10,4 @@ RUN git clone https://github.com/andrew-qian/Joyces.git
 WORKDIR "/Joyces"
 RUN ls
 RUN pip install -r requirements.txt
-RUN python main.py
+RUN python3 main.py
