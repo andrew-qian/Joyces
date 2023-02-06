@@ -3,8 +3,10 @@ RUN apt-get update
 RUN apt-get install -y python3 python3-pip
 RUN apt -f install -y
 RUN apt-get install -y wget
-RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install ./google-chrome-stable_current_amd64.deb -y
+ARG CHROME_VERSION="109.0.5414.119-1"
+RUN wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb \
+  && apt install -y /tmp/chrome.deb \
+  && rm /tmp/chrome.deb
 RUN apt-get install -y git
 RUN git clone https://github.com/andrew-qian/Joyces.git
 WORKDIR "/Joyces"
