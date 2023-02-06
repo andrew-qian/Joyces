@@ -37,7 +37,7 @@ def email():
 
 def main():
     chromedriver = "./chromedriver"
-    driver = webdriver.Chrome(service = Service(chromedriver))
+    driver = webdriver.Chrome()
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
