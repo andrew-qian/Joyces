@@ -1,5 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import time
 import smtplib, ssl
@@ -36,7 +37,7 @@ def email():
 
 def main():
     chromedriver = "./chromedriver"
-    driver = webdriver.Chrome(chromedriver)
+    driver = webdriver.Chrome(service = Service(chromedriver))
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
