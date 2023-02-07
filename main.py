@@ -64,7 +64,7 @@ def main():
 
     table = driver.find_element(By.CLASS_NAME, 'ui-datepicker-calendar')
     tbody = table.find_element(By.TAG_NAME, 'tbody')
-    elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-unavailable')
+    elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
 
     print("found", len(elements))
     driver.quit()
