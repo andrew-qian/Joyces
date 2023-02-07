@@ -13,4 +13,3 @@ WORKDIR "/Joyces"
 RUN ls
 RUN chmod a+x chromedriver
 RUN pip install -r requirements.txt
-RUN railway run
