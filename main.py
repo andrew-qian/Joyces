@@ -1,6 +1,7 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 import smtplib, ssl
@@ -36,8 +37,12 @@ def email():
 
 
 def main():
-    chromedriver = "./chromedriver"
-    driver = webdriver.Chrome(service = Service(chromedriver))
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chromedriver = "./chromedriver.exe"
+    driver = webdriver.Chrome(service = Service(chromedriver), chrome_options = chrome_options)
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
