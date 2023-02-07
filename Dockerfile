@@ -13,4 +13,4 @@ WORKDIR "/Joyces"
 RUN ls
 RUN chmod a+x chromedriver
 RUN pip install -r requirements.txt
-CMD [ "python3", "main.py" ]
+CMD [ "python3", "-u", "main.py" ]
