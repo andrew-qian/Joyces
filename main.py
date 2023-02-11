@@ -18,7 +18,6 @@ from pathlib import Path
 # SENDER_PASSWORD = os.getenv('PASSWORD')
 # RECEIVER_EMAILS = os.getenv('EMAILS')
 
-print("Env vars:", SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAILS)
 
 def email():
     print("sending email")
@@ -86,6 +85,8 @@ def main():
         email()
 
 print("Starting program...")
+print("Env vars:", SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAILS)
+
 while (True):
     main()
     time.sleep(300)
