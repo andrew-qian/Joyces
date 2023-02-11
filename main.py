@@ -10,6 +10,8 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 SENDER_EMAIL = os.getenv('SENDER_EMAIL')
 SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
 RECEIVER_EMAILS = os.getenv('RECEIVER_EMAILS')
