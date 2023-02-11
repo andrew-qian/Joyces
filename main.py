@@ -14,9 +14,9 @@ from pathlib import Path
 dotenv_path = Path('./environmentargs.env')
 load_dotenv(dotenv_path=dotenv_path)
 
-SENDER_EMAIL = os.getenv('EMAIL')
-SENDER_PASSWORD = os.getenv('PASSWORD')
-RECEIVER_EMAILS = os.getenv('EMAILS')
+SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
+RECEIVER_EMAILS = os.getenv('RECEIVER_EMAILS')
 
 
 def email():

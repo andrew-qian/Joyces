@@ -1,4 +1,7 @@
 FROM ubuntu:23.04
+ARG SENDER_EMAIL
+ARG SENDER_PASSWORD
+ARG RECEIVER_EMAILS
 RUN apt-get update 
 RUN apt-get install -y python3 python3-pip
 RUN apt -f install -y
