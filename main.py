@@ -9,10 +9,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
-from pathlib import Path
-
-dotenv_path = Path('./environmentargs.env')
-load_dotenv(dotenv_path=dotenv_path)
 
 SENDER_EMAIL = os.getenv('SENDER_EMAIL')
 SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
