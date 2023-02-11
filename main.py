@@ -7,15 +7,30 @@ import time
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+import os
+from pathlib import Path
+
+# dotenv_path = Path('./environmentargs.env')
+# load_dotenv(dotenv_path=dotenv_path)
+
+# SENDER_EMAIL = os.getenv('EMAIL')
+# SENDER_PASSWORD = os.getenv('PASSWORD')
+# RECEIVER_EMAILS = os.getenv('EMAILS')
+
+print("Env vars:", SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAILS)
 
 def email():
     print("sending email")
 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "joycesbot@gmail.com"  # Enter your address
-    receiver_email = ["andrewyukaiqian@gmail.com", "gradtolentino@icloud.com", "kr4chdown@gmail.com"]  # Enter receiver address
-    password = "ditkurjeflpsginm"
+    sender_email = SENDER_EMAIL
+    print("Sender email:", sender_email)  # Enter your address
+    receiver_email = RECEIVER_EMAILS.split(',')  # Enter receiver address
+    print("receiver emails: ", receiver_email)
+    password = SENDER_PASSWORD
+    print("Password: ", password)
     
     message = MIMEMultipart("alternative")
     message["Subject"] = "Joyce's BTW Available"
@@ -40,7 +55,7 @@ def main():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chromedriver = "./chromedriver"
+    chromedriver = "./chromedriver.exe"
     driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
     # chromedriver = ChromeDriverManager().install()
 
@@ -63,7 +78,7 @@ def main():
 
     table = driver.find_element(By.CLASS_NAME, 'ui-datepicker-calendar')
     tbody = table.find_element(By.TAG_NAME, 'tbody')
-    elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
+    elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-unavailable')
 
     print("found", len(elements))
     driver.quit()
