@@ -73,7 +73,7 @@ def main():
 print("Starting program...")
 while (True):
     main()
-    time.sleep(1200)
+    time.sleep(300)
 
 
 
