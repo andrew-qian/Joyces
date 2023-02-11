@@ -8,7 +8,6 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-
 def email():
     print("sending email")
 
@@ -42,7 +41,7 @@ def main():
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chromedriver = "./chromedriver"
-    driver = webdriver.Chrome(service = Service(chromedriver), chrome_options = chrome_options)
+    driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
@@ -70,6 +69,7 @@ def main():
     driver.quit()
     if len(elements) > 0:
         email()
+
 print("Starting program...")
 while (True):
     main()
