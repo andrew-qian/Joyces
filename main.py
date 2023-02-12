@@ -9,6 +9,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
+load_dotenv()
 
 
 SENDER_EMAIL = os.getenv('SENDER_EMAIL')
