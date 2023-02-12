@@ -10,7 +10,6 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
 
 SENDER_EMAIL = os.getenv('SENDER_EMAIL')
 SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
@@ -52,7 +51,7 @@ def main():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chromedriver = "./chromedriver"
+    chromedriver = "./chromedriver.exe"
     driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
     # chromedriver = ChromeDriverManager().install()
 
@@ -75,7 +74,7 @@ def main():
 
     table = driver.find_element(By.CLASS_NAME, 'ui-datepicker-calendar')
     tbody = table.find_element(By.TAG_NAME, 'tbody')
-    elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-unavailable')
+    elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
 
     print("found", len(elements))
     driver.quit()
