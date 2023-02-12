@@ -12,9 +12,9 @@ import os
 
 load_dotenv()
 
-SENDER_EMAIL = os.getenv('SENDER_EMAIL')
-SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')
-RECEIVER_EMAILS = os.getenv('RECEIVER_EMAILS')
+SENDER_EMAIL = os.environ['SENDER_EMAIL']
+SENDER_PASSWORD = os.environ['SENDER_PASSWORD']
+RECEIVER_EMAILS = os.environ['RECEIVER_EMAILS']
 
 
 def email():
