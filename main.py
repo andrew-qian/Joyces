@@ -59,6 +59,8 @@ def main():
     url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
     driver.get(url)
 
+    time.sleep(5)
+
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
     username.send_keys('Qia12779')
 
@@ -67,8 +69,12 @@ def main():
 
     sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
     sign_in.click()
+    
+    time.sleep(5)
 
     driver.get('https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1')
+
+    time.sleep(5)
 
     table = driver.find_element(By.CLASS_NAME, 'ui-datepicker-calendar')
     tbody = table.find_element(By.TAG_NAME, 'tbody')
