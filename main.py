@@ -13,6 +13,7 @@ SENDER_EMAIL = os.environ['SENDER_EMAIL']
 SENDER_PASSWORD = os.environ['SENDER_PASSWORD']
 RECEIVER_EMAILS = os.environ['RECEIVER_EMAILS']
 
+oldelements = []
 
 def email():
     print("sending email")
@@ -41,7 +42,8 @@ def email():
             server.sendmail(sender_email, receiver_email[i], message.as_string())
 
 
-def main():
+def main(oldelements):
+    origlen = len(oldelements)
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
@@ -79,16 +81,21 @@ def main():
     tbody = driver.find_element(By.XPATH, '//*[@id="datepicker"]/div/div[1]/table/tbody')
     elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
 
+    oldelements.append(elements2)
+    oldelements.append(elements)
+
+    newlen = len(oldelements)
+
     print("found", len(elements) + len(elements2))
     driver.quit()
-    if len(elements) > 0 or len(elements2) > 0:
+    if (len(elements) > 0 or len(elements2) > 0) and newlen != origlen:
         email()
 
 print("Starting program...")
 print("Env vars:", SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAILS)
 
 while (True):
-    main()
+    main(oldelements=oldelements)
     time.sleep(300)
 
 
