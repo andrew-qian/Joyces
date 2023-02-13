@@ -20,14 +20,11 @@ def email():
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = SENDER_EMAIL
-    print("Sender email:", sender_email)  # Enter your address
     receiver_email = RECEIVER_EMAILS.split(',')  # Enter receiver address
-    print("receiver emails: ", receiver_email)
     password = SENDER_PASSWORD
-    print("Password: ", password)
     
     message = MIMEMultipart("alternative")
-    message["Subject"] = "Joyce's BTW Available"
+    message["Subject"] = "fuck you grad" ##Joyce's BTW Available
 
     text = """\
     will implement date, time, instructor later"""
@@ -69,20 +66,22 @@ def main():
 
     sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
     sign_in.click()
-    
+
     time.sleep(5)
 
     driver.get('https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1')
 
     time.sleep(5)
 
-    table = driver.find_element(By.CLASS_NAME, 'ui-datepicker-calendar')
-    tbody = table.find_element(By.TAG_NAME, 'tbody')
+    tbody2 = driver.find_element(By.XPATH, '//*[@id="datepicker"]/div/div[2]/table/tbody')
+    elements2 = tbody2.find_elements(By.CLASS_NAME, 'ui-state-available')
+
+    tbody = driver.find_element(By.XPATH, '//*[@id="datepicker"]/div/div[1]/table/tbody')
     elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
 
-    print("found", len(elements))
+    print("found", len(elements) + len(elements2))
     driver.quit()
-    if len(elements) > 0:
+    if len(elements) > 0 or len(elements2) > 0:
         email()
 
 print("Starting program...")
