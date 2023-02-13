@@ -1,3 +1,5 @@
 
 environmentargs.bat
 environmentargs.env
+botenvargs.env
+bot.py
