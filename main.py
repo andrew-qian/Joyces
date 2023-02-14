@@ -9,11 +9,22 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 
+# from dotenv import load_dotenv
+# from pathlib import Path
+
+# env_path = Path('./environmentargs.env')
+# load_dotenv(dotenv_path=env_path)
+
 SENDER_EMAIL = os.environ['SENDER_EMAIL']
 SENDER_PASSWORD = os.environ['SENDER_PASSWORD']
 RECEIVER_EMAILS = os.environ['RECEIVER_EMAILS']
 
+# SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+# SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')      
+# RECEIVER_EMAILS = os.getenv('RECEIVER_EMAILS')
+
 oldelements = []
+
 
 def email():
     print("sending email")
@@ -25,7 +36,7 @@ def email():
     password = SENDER_PASSWORD
     
     message = MIMEMultipart("alternative")
-    message["Subject"] = "fuck you grad" ##Joyce's BTW Available
+    message["Subject"] = "Joyce's BTW Available" ##Joyce's BTW Available
 
     text = """\
     will implement date, time, instructor later"""
@@ -48,7 +59,7 @@ def main(oldelements):
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chromedriver = "./chromedriver"
+    chromedriver = "./chromedriver.exe"
     driver = webdriver.Chrome(service = Service(chromedriver), options=chrome_options)
     # chromedriver = ChromeDriverManager().install()
 
@@ -57,8 +68,6 @@ def main(oldelements):
 
     url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
     driver.get(url)
-
-    time.sleep(5)
 
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
     username.send_keys('Qia12779')
@@ -69,11 +78,7 @@ def main(oldelements):
     sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
     sign_in.click()
 
-    time.sleep(5)
-
     driver.get('https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1')
-
-    time.sleep(5)
 
     tbody2 = driver.find_element(By.XPATH, '//*[@id="datepicker"]/div/div[2]/table/tbody')
     elements2 = tbody2.find_elements(By.CLASS_NAME, 'ui-state-available')
@@ -81,8 +86,7 @@ def main(oldelements):
     tbody = driver.find_element(By.XPATH, '//*[@id="datepicker"]/div/div[1]/table/tbody')
     elements = tbody.find_elements(By.CLASS_NAME, 'ui-state-available')
 
-    oldelements.append(elements2)
-    oldelements.append(elements)
+    oldelements = elements + elements2
 
     newlen = len(oldelements)
 
@@ -91,11 +95,13 @@ def main(oldelements):
     if (len(elements) > 0 or len(elements2) > 0) and newlen != origlen:
         email()
 
+    return oldelements
+
 print("Starting program...")
 print("Env vars:", SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAILS)
 
 while (True):
-    main(oldelements=oldelements)
+    oldelements = main(oldelements = oldelements)
     time.sleep(300)
 
 
