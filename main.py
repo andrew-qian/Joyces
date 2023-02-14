@@ -24,7 +24,7 @@ RECEIVER_EMAILS = os.environ['RECEIVER_EMAILS']
 # RECEIVER_EMAILS = os.getenv('RECEIVER_EMAILS')
 
 oldelements = []
-
+#
 
 def email():
     print("sending email")
