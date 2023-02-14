@@ -15,6 +15,7 @@ import os
 # env_path = Path('./environmentargs.env')
 # load_dotenv(dotenv_path=env_path)
 
+
 SENDER_EMAIL = os.environ['SENDER_EMAIL']
 SENDER_PASSWORD = os.environ['SENDER_PASSWORD']
 RECEIVER_EMAILS = os.environ['RECEIVER_EMAILS']
