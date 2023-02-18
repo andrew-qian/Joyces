@@ -3,5 +3,3 @@ environmentargs.bat
 environmentargs.env
 *.env
 bot.py
-
-__pycache__/main.cpython-310.pyc
