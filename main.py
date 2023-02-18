@@ -68,7 +68,6 @@ def main(oldelements):
     # chromedriver = ChromeDriverManager().install()
 
     # driver = webdriver.Chrome(chromedriver)
-    driver.minimize_window()
 
     url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
     driver.get(url)
