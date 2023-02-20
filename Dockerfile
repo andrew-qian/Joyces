@@ -3,6 +3,8 @@ FROM ubuntu:23.04
 ARG SENDER_EMAIL
 ARG SENDER_PASSWORD
 ARG RECEIVER_EMAILS
+ARG JOYCES_USERNAME
+ARG JOYCES_PASSWORD
 RUN apt-get update 
 RUN apt-get install -y python3 python3-pip
 RUN apt -f install -y
