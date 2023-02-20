@@ -19,10 +19,14 @@ import os
 SENDER_EMAIL = os.environ['SENDER_EMAIL']
 SENDER_PASSWORD = os.environ['SENDER_PASSWORD']
 RECEIVER_EMAILS = os.environ['RECEIVER_EMAILS']
+JOYCES_USERNAME = os.environ['JOYCES_USERNAME']
+JOYCES_PASSWORD = os.environ['JOYCES_PASSWORD']
 
 # SENDER_EMAIL = os.getenv('SENDER_EMAIL')
 # SENDER_PASSWORD = os.getenv('SENDER_PASSWORD')      
 # RECEIVER_EMAILS = os.getenv('RECEIVER_EMAILS')
+# JOYCES_USERNAME = os.getenv('JOYCES_USERNAME')
+# JOYCES_PASSWORD = os.getenv('JOYCES_PASSWORD')
 
 oldelements = []
 #
@@ -54,6 +58,7 @@ def email():
 
 
 def main(oldelements):
+    print("Searching...")
     origlen = len(oldelements)
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
@@ -73,10 +78,10 @@ def main(oldelements):
     driver.get(url)
 
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
-    username.send_keys('Qia12779')
+    username.send_keys(JOYCES_USERNAME)
 
     password = driver.find_element(By.XPATH, '//*[@id="password"]')
-    password.send_keys('9418123')
+    password.send_keys(JOYCES_PASSWORD)
 
     sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
     sign_in.click()
