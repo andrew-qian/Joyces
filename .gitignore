@@ -3,3 +3,4 @@ environmentargs.bat
 environmentargs.env
 *.env
 bot.py
+test.py

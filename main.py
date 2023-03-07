@@ -3,6 +3,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -83,8 +85,10 @@ def main(oldelements):
     password = driver.find_element(By.XPATH, '//*[@id="password"]')
     password.send_keys(JOYCES_PASSWORD)
 
-    sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
-    sign_in.click()
+    # sign_in = driver.find_element(By.XPATH, '/html/body/div[3]/form[1]/div[6]/button')
+    # sign_in.click()
+
+    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[3]/form[1]/div[6]/button'))).click()
 
     driver.get('https://www.tds.ms/CentralizeSP/BtwScheduling/Lessons?SchedulingTypeId=1')
 
