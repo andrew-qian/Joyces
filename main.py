@@ -10,6 +10,8 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
+from selenium.common.exceptions import TimeoutException
+
 
 # from dotenv import load_dotenv
 # from pathlib import Path
@@ -77,8 +79,16 @@ def main(oldelements):
 
     # driver = webdriver.Chrome(chromedriver)
 
-    url = 'https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool'
-    driver.get(url)
+    try:
+        driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
+    except (TimeoutException) as e:
+        retries = 10
+        if retries > 0:
+            retries -= 1
+            print("Retries left, " + retries + " Continuing on".format(retries, traceback.format_exc()))
+            time.sleep(5)
+        else:
+            raise e
 
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
     username.send_keys(JOYCES_USERNAME)
