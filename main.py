@@ -61,6 +61,16 @@ def email():
             server.sendmail(sender_email, receiver_email[i], message.as_string())
 
 
+def tryExcept(driver):
+    try:
+        driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
+    except:
+        print("Trying again...")
+        time.sleep(5)
+        tryExcept(driver)
+
+
+
 def main(oldelements):
     print("Searching...")
     origlen = len(oldelements)
@@ -79,16 +89,7 @@ def main(oldelements):
 
     # driver = webdriver.Chrome(chromedriver)
 
-    try:
-        driver.get('https://www.tds.ms/CentralizeSP/Student/Login/joycesdrivingschool')
-    except (TimeoutException) as e:
-        retries = 10
-        if retries > 0:
-            retries -= 1
-            print("Retries left, " + retries + " Continuing on".format(retries, traceback.format_exc()))
-            time.sleep(5)
-        else:
-            raise e
+    tryExcept(driver)
 
     username = driver.find_element(By.XPATH, '//*[@id="username"]')
     username.send_keys(JOYCES_USERNAME)
