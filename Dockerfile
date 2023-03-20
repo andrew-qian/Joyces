@@ -17,7 +17,6 @@ RUN git clone https://github.com/andrew-qian/Joyces.git
 WORKDIR "/Joyces"
 RUN ls
 RUN chmod a+x chromedriver
-RUN pip install -r requirements.txt
 
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
